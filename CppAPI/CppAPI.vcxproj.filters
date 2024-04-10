@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <Filter Include="dllFiles">
+      <UniqueIdentifier>{2b308200-64ff-4b70-b2e2-1b001f09310f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Excel">
+      <UniqueIdentifier>{cb07ad3b-bf34-47bd-943e-3893dd00a5ec}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Excel\Cell">
+      <UniqueIdentifier>{c27b30ac-fb4b-4686-a885-40c2ca7c3a71}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Excel\Cell\Func">
+      <UniqueIdentifier>{662b8188-3a1b-412c-9080-fa71d342b6a4}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="DoubleCell.h">
+      <Filter>Excel\Cell</Filter>
+    </ClInclude>
+    <ClInclude Include="StringCell.h">
+      <Filter>Excel\Cell</Filter>
+    </ClInclude>
+    <ClInclude Include="framework.h">
+      <Filter>dllFiles</Filter>
+    </ClInclude>
+    <ClInclude Include="pch.h">
+      <Filter>dllFiles</Filter>
+    </ClInclude>
+    <ClInclude Include="Cell.h">
+      <Filter>Excel</Filter>
+    </ClInclude>
+    <ClInclude Include="FuncSum.h">
+      <Filter>Excel\Cell\Func</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="pch.cpp">
+      <Filter>dllFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="dllmain.cpp">
+      <Filter>dllFiles</Filter>
+    </ClCompile>
+    <ClCompile Include="module.cpp">
+      <Filter>Excel</Filter>
+    </ClCompile>
+    <ClCompile Include="FuncCell.h">
+      <Filter>Excel\Cell</Filter>
+    </ClCompile>
+  </ItemGroup>
+</Project>
