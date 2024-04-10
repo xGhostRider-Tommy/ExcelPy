@@ -26,7 +26,6 @@ PYBIND11_MODULE(CppAPI, m)
 	py::class_<FuncCell, Cell>(m, "FuncCell")
 		.def(py::init<py::list>())
 		.def("get", &FuncCell::get);
-	int a;
 
 #ifdef VERSION_INFO
 	m.attr("__version__") = VERSION_INFO;
