@@ -11,19 +11,23 @@ namespace py = pybind11;
 
 class FuncCell: public Cell
 {
-protected:
-	std::vector<Cell*> pCells;
+protected: // anche i figli di FuncCell possono accedere alla variabile (quello che c'e' sotto)
+	std::vector<Cell*> pCells; // vector = lista pyton che contiene delle celle (TUTTE le celle)
 
-public:
-	FuncCell(py::list cells)
+public: // tutti possono accedere alla funzione sottostante 
+	FuncCell(py::list cells) // costruttore
 	{
-		for (int i = 0; i < cells.size(); i++)
+		auto tLista = cells.cast<std::vector<Cell*>>();
+
+		/*for (int i = 0; i < cells.size(); ++i)
 		{
-			pCells[i] = py::cast<Cell*>(cells[i]);
-		}
+			pCells[i] 
+		}*/
+		printf("idk");
+
 	}
 
-	~FuncCell()
+	~FuncCell() // distruttore
 	{
 		pCells.clear();
 	}

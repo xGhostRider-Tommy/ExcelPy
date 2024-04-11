@@ -1,5 +1,5 @@
 #include "pch.h"
-#include <pybind11/pybind11.h>
+#include <pybind11/pybind11.h> // include python
 #include "DoubleCell.h"
 #include "StringCell.h"
 #include "FuncCell.h"
@@ -13,7 +13,7 @@ int test(int a)
 	return a + 1;
 }
 
-PYBIND11_MODULE(CppAPI, m)
+PYBIND11_MODULE(CppAPI, m) // importazione da/a python
 {
 	m.def("test", &test, "idk");
 

@@ -1,24 +1,24 @@
 #ifndef CELL_H
-#define CELL_H
+#define CELL_H // impedisce di definire la classe 2 volte
 
-#include "pch.h"
+#include "pch.h" // per far funzionare la libreria
 
-class Cell
+class Cell // definiamo la classe
 {
 public:
-	Cell()
+	Cell() // costruttore
 	{
 		
 	}
 
-	virtual ~Cell()
+	virtual ~Cell() // distruttore
 	{
 
 	}
 
-	virtual double get()
+	virtual double get() // funzione che da il valore della cella (valore = testo numerico contenuto nella cella)
 	{
-		return 0;
+		return 0; // perchè è vuota, quindi è zero
 	}
 
 };

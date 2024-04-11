@@ -5,20 +5,20 @@
 #include "FuncCell.h"
 #include <vector>
 
-class FuncSum: public FuncCell
+class FuncSum: public FuncCell // FuncSum eredita da FuncCell che eredita da Cell. Sum e' una cella 
 {
 public:
-	FuncSum(py::list cells): FuncCell(cells)
+	FuncSum(py::list cells): FuncCell(cells) // costruttore
 	{
 		
 	}
 
-	~FuncSum()
+	~FuncSum() // distruttore
 	{
 		
 	}
 
-	double get()
+	double get() // ha gia' pCells (lista)
 	{
 		double sum = 0;
 
@@ -27,7 +27,7 @@ public:
 			sum = sum + pCells[i]->get();
 		}
 		
-		return sum;
+		return sum; //da come risultato la somma
 	}
 	
 };
