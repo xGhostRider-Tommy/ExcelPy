@@ -2,12 +2,7 @@
 #ifndef FUNCCELL_H
 #define FUNCCELL_H
 
-#include <pybind11/pybind11.h>
 #include "Cell.h"
-#include <vector>
-
-namespace py = pybind11;
-
 
 class FuncCell: public Cell
 {
@@ -15,16 +10,12 @@ protected: // anche i figli di FuncCell possono accedere alla variabile (quello 
 	std::vector<Cell*> pCells; // vector = lista pyton che contiene delle celle (TUTTE le celle)
 
 public: // tutti possono accedere alla funzione sottostante 
-	FuncCell(py::list cells) // costruttore
+	FuncCell(py::list pyCells) // costruttore
 	{
-		auto tLista = cells.cast<std::vector<Cell*>>();
-
-		/*for (int i = 0; i < cells.size(); ++i)
+		for (int i = 0; i < pyCells.size(); i++)
 		{
-			pCells[i] 
-		}*/
-		printf("idk");
-
+			pCells.push_back(py::cast<Cell*>(pyCells[i]));
+		}
 	}
 
 	~FuncCell() // distruttore

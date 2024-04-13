@@ -9,14 +9,19 @@ private:
 	char* pValore;
 
 public:
-	StringCell(char* valore)
+	StringCell(char* pyValore, int size)
 	{
-		pValore = valore;
+		pValore = new char[size];
+
+		for (int i = 0; i < size; i++)
+		{
+			pValore[i] = pyValore[i];
+		}
 	}
 
 	~StringCell()
 	{
-		
+		delete pValore;
 	}
 
 	char* getString()

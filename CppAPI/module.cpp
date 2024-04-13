@@ -1,5 +1,6 @@
 #include "pch.h"
 #include <pybind11/pybind11.h> // include python
+#include "Cell.h"
 #include "DoubleCell.h"
 #include "StringCell.h"
 #include "FuncCell.h"
@@ -26,6 +27,10 @@ PYBIND11_MODULE(CppAPI, m) // importazione da/a python
 	py::class_<FuncCell, Cell>(m, "FuncCell")
 		.def(py::init<py::list>())
 		.def("get", &FuncCell::get);
+	/*py::class_<StringCell, Cell>(m, "StringCell")
+		.def(py::init<char*>())
+		.def("get", &StringCell::get)
+		.def("getString", &StringCell::getString);*/
 
 #ifdef VERSION_INFO
 	m.attr("__version__") = VERSION_INFO;

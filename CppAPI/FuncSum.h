@@ -3,7 +3,6 @@
 #define FUNCSUM_H
 
 #include "FuncCell.h"
-#include <vector>
 
 class FuncSum: public FuncCell // FuncSum eredita da FuncCell che eredita da Cell. Sum e' una cella 
 {

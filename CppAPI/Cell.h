@@ -2,6 +2,12 @@
 #define CELL_H // impedisce di definire la classe 2 volte
 
 #include "pch.h" // per far funzionare la libreria
+#include <vector>
+#include <iostream>
+#include <pybind11/pybind11.h>
+
+
+namespace py = pybind11;
 
 class Cell // definiamo la classe
 {
