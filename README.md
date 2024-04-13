@@ -8,8 +8,8 @@ Ciao! Questo e' un progetto per scuola. Abbiamo deciso di ricreare una versione 
 ## Requirements
 - Almeno **Python 3.12.3** o successivi
 - **Pybind11**
-  >sul cmd eseguire:
-  >`pip install pybind11`
+  > sul cmd eseguire:
+  > `pip install pybind11`
 
 ## Running
 Scaricare `ExcelPy.zip` ed eseguire `ExcelPy\ExcelPy.py`
@@ -19,8 +19,8 @@ Scaricare `ExcelPy.zip` ed eseguire `ExcelPy\ExcelPy.py`
 ## Requirements
 - Almeno **Python 3.12.3** o successivi installati su **all users** con i **developer tools** installati sia su **python** che su **visual studio**
 - **Pybind11** installati su **all users**
-  >sul cmd come amministratore eseguire:
-  >`pip install pybind11`
+  > sul cmd come amministratore eseguire:
+  > `pip install pybind11`
 
 **IMPORTANTE**: L'installazione di python, con le relative dipendenze e' su `C:\Programs Files\Python`, se lo si ha installato in un altra directory cambiare le dipendenze a quella
 PS: Python se e' installato su **all users** di solito vien salvato in `C:\Programs Files\Python%VERSIONE%`. Dove `%VERSIONE%` e' la versione di Python (Es. Python 3.12.x sara' installato in `C:\Programs Files\Python312` e python 3.11.x su `C:\Programs Files\Python311`).
