@@ -3,8 +3,10 @@
 
 #include "pch.h" // per far funzionare la libreria
 #include <vector>
+#include <string>
 #include <iostream>
 #include <pybind11/pybind11.h>
+#include <pybind11/stl.h>
 
 
 namespace py = pybind11;
@@ -17,7 +19,7 @@ public:
 		
 	}
 
-	virtual ~Cell() // distruttore
+	~Cell() // distruttore
 	{
 
 	}
@@ -25,6 +27,11 @@ public:
 	virtual double get() // funzione che da il valore della cella (valore = testo numerico contenuto nella cella)
 	{
 		return 0; // perchè è vuota, quindi è zero
+	}
+
+	virtual std::string getString()
+	{
+		return "";
 	}
 
 };

@@ -154,8 +154,8 @@
   <ItemGroup>
     <ClInclude Include="Cell.h" />
     <ClInclude Include="DoubleCell.h" />
+    <ClInclude Include="ExcelCell.h" />
     <ClInclude Include="framework.h" />
-    <ClInclude Include="FuncSum.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="StringCell.h" />
   </ItemGroup>

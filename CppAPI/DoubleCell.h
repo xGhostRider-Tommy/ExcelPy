@@ -7,12 +7,12 @@
 class DoubleCell : public Cell // definisce la classe e suo padre
 {
 private: //solo la cella puo' accedere a pValore (es. 3,76)
-	double pValore;  // double e' un numero decimale (il corrispospondente a float di python)
+	double pValue;  // double e' un numero decimale (il corrispospondente a float di python)
 
 public: //chiunque puo' accedere a questa funzione (tutto quello che c'e' sotto)
 	DoubleCell(double valore) // costruttore
 	{
-		pValore = valore;
+		pValue = valore;
 	}
 
 	~DoubleCell() // distruttore
@@ -22,7 +22,12 @@ public: //chiunque puo' accedere a questa funzione (tutto quello che c'e' sotto)
 
 	double get() override // ritorna il pValore
 	{
-		return pValore;
+		return pValue;
+	}
+
+	std::string getString() override
+	{
+		return std::to_string(pValue);
 	}
 };
 #endif // !DOUBLECELL_H

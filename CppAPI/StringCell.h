@@ -6,26 +6,22 @@
 class StringCell : public Cell
 {
 private:
-	char* pValore;
+	std::string pValue;
 
 public:
-	StringCell(char* pyValore, int size)
+	StringCell(std::string pyValore)
 	{
-		pValore = new char[size];
-
-		for (int i = 0; i < size; i++)
-		{
-		}
+		pValue = pyValore;
 	}
 
 	~StringCell()
 	{
-		delete pValore;
+		
 	}
 
-	char* getString()
+	std::string getString() override
 	{
-		return pValore;
+		return pValue;
 	}
 };
 #endif // !STRINGCELL_H

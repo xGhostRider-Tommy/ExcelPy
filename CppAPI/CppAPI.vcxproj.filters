@@ -10,9 +10,6 @@
     <Filter Include="Excel\Cell">
       <UniqueIdentifier>{c27b30ac-fb4b-4686-a885-40c2ca7c3a71}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Excel\Cell\Func">
-      <UniqueIdentifier>{662b8188-3a1b-412c-9080-fa71d342b6a4}</UniqueIdentifier>
-    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="DoubleCell.h">
@@ -30,8 +27,8 @@
     <ClInclude Include="Cell.h">
       <Filter>Excel</Filter>
     </ClInclude>
-    <ClInclude Include="FuncSum.h">
-      <Filter>Excel\Cell\Func</Filter>
+    <ClInclude Include="ExcelCell.h">
+      <Filter>Excel</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
