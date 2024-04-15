@@ -15,7 +15,6 @@ public:
 
 		for (int i = 0; i < size; i++)
 		{
-			pValore[i] = pyValore[i];
 		}
 	}
 
