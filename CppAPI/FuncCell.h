@@ -3,11 +3,12 @@
 #define FUNCCELL_H
 
 #include "Cell.h"
+#include "ExcelCell.h"
 
 class FuncCell: public Cell
 {
 private:
-	std::vector<Cell*> pCells; // lista pyton che contiene delle celle (TUTTE le celle)
+	std::vector<ExcelCell*> pCells; // lista pyton che contiene delle celle (TUTTE le celle)
 	std::string pFunction;
 	bool pError; // potrei mettere una stringa o un numero per i tipi di errori
 
@@ -18,7 +19,7 @@ private:
 
 		for (int i = 0; i < pCells.size(); i++)
 		{
-			sum = sum + pCells[i]->get();
+			sum = sum + pCells[i]->ptr()->get();
 		}
 		return sum;
 	}
@@ -29,7 +30,7 @@ private:
 
 		for (int i = 0; i < pCells.size(); i++)
 		{
-			subtraction = subtraction - pCells[i]->get();
+			subtraction = subtraction - pCells[i]->ptr()->get();
 		}
 		return subtraction;
 	}
@@ -40,7 +41,7 @@ private:
 
 		for (int i = 0; i < pCells.size(); i++)
 		{
-			multiplication = multiplication + pCells[i]->get();
+			multiplication = multiplication + pCells[i]->ptr()->get();
 		}
 		return multiplication;
 	}
@@ -49,7 +50,7 @@ private:
 	{
 		if (pCells.size() == 2)
 		{
-			return pCells[0]->get() / pCells[1]->get();
+			return pCells[0]->ptr()->get() / pCells[1]->ptr()->get();
 		}
 		else
 		{
@@ -73,7 +74,7 @@ private:
 		}
 	}
 
-public: // tutti possono accedere alla funzione sottostante 
+public: // tutti possono accedere alla funzione sottostante
 	FuncCell(py::list pyCells, std::string function) // costruttore
 	{
 		pFunction = function;
@@ -81,16 +82,24 @@ public: // tutti possono accedere alla funzione sottostante
 
 		for (int i = 0; i < pyCells.size(); i++)
 		{
-			pCells.push_back(pyCells[i].cast<Cell*>());
+			pCells.push_back(pyCells[i].cast<ExcelCell*>());
 		}
 	}
 
 	~FuncCell() // distruttore
 	{
+		for (int i = 0; i < pCells.size(); i++)
+		{
+			if (!pCells[i]->KeepAlive())
+			{
+				delete pCells[i];
+				pCells.erase(pCells.begin() + i);
+			}
+		}
 		pCells.clear();
 	}
 
-	bool isError() // da rivedere il nome
+	bool Error() // da rivedere il nome
 	{
 		return pError;
 	}
@@ -110,7 +119,12 @@ public: // tutti possono accedere alla funzione sottostante
 
 	std::string getString() override
 	{
-		return pFunction;
+		return pFunction; // ridare formula (DA FARE)
+	}
+
+	std::string getDisplay() override
+	{
+		return std::to_string(get());
 	}
 };
 #endif // !FUNCCELL_H

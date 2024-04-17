@@ -34,5 +34,10 @@ public:
 		return "";
 	}
 
+	virtual std::string getDisplay()
+	{
+		return getString();
+	}
+
 };
 #endif // !CELL_H
