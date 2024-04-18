@@ -90,10 +90,9 @@ public: // tutti possono accedere alla funzione sottostante
 	{
 		for (int i = 0; i < pCells.size(); i++)
 		{
-			if (!pCells[i]->KeepAlive())
+			if (!pCells[i]->KeepAlive()) // se non gli dici quando distruggere non lo fa mai
 			{
 				delete pCells[i];
-				pCells.erase(pCells.begin() + i);
 			}
 		}
 		pCells.clear();

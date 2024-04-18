@@ -16,7 +16,7 @@ class Cell // definiamo la classe
 public:
 	Cell() // costruttore
 	{
-		
+		// cella vuota
 	}
 
 	~Cell() // distruttore
@@ -29,12 +29,12 @@ public:
 		return 0; // perchè è vuota, quindi è zero
 	}
 
-	virtual std::string getString()
+	virtual std::string getString() // quello che vedo nella barra della funzione (se scrivo valore è anche quello che vedo, se funzione no) 
 	{
 		return "";
 	}
 
-	virtual std::string getDisplay()
+	virtual std::string getDisplay() // quello che vedo nella cella
 	{
 		return getString();
 	}

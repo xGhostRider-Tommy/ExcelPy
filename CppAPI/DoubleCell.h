@@ -4,25 +4,25 @@
 
 #include "Cell.h" // include Cell (padre)
 
-class DoubleCell : public Cell // definisce la classe e suo padre
+class DoubleCell : public Cell // definisce la classe e suo padre. double cell per valori decimali
 {
-private: //solo la cella puo' accedere a pValore (es. 3,76)
-	double pValue;  // double e' un numero decimale (il corrispospondente a float di python)
+private: // solo la cella puo' accedere a pValore (es. 3,76)
+	double pValue; // double e' un numero decimale (il corrispospondente a float di python)
 
-public: //chiunque puo' accedere a questa funzione (tutto quello che c'e' sotto)
-	DoubleCell(double valore) // costruttore
+public: // chiunque puo' accedere a questa funzione (tutto quello che c'e' sotto)
+	DoubleCell(double value) // costruttore
 	{
-		pValue = valore;
+		pValue = value;
 	}
 
 	~DoubleCell() // distruttore
 	{
-
+		// in caso ci sia un puntatore gli viene detto di distruggerlo
 	}
 
 	double get() override // ritorna il pValore
 	{
-		return pValue;
+		return pValue; // non ti ridà 2+2 ma 4
 	}
 
 	std::string getString() override
