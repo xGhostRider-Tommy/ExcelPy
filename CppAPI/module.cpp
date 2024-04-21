@@ -19,7 +19,7 @@ PYBIND11_MODULE(CppAPI, m) // importazione da/a python
 	m.def("test", &test, "idk");
 
 	py::class_<ExcelCell>(m, "ExcelCell")
-		.def(py::init<py::object>())
+		.def(py::init<py::object>(), py::keep_alive<1, 2>())
 		.def(py::init<py::object, bool>(), py::keep_alive<1, 2>()) // keep_alive disattiva il garbage collector per questo parametro
 		.def("ptr", &ExcelCell::ptr)
 		.def("set", &ExcelCell::set, py::keep_alive<1, 2>());
