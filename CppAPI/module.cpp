@@ -35,7 +35,7 @@ PYBIND11_MODULE(CppAPI, m) // importazione da/a python
 		.def("get", &DoubleCell::getDisplay);
 
 	py::class_<FuncCell, Cell>(m, "FuncCell")
-		.def(py::init<py::list, std::string>(), py::keep_alive<1, 2>())
+		.def(py::init<py::list, std::string, std::string>(), py::keep_alive<1, 2>())
 		.def("getString", &FuncCell::getString)
 		.def("get", &FuncCell::getDisplay);
 

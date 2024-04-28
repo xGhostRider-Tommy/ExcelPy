@@ -10,6 +10,7 @@ class FuncCell: public Cell
 private:
 	std::vector<ExcelCell*> pCells; // lista pyton che contiene delle celle (TUTTE le celle)
 	std::string pFunction;
+	std::string pFormula;
 	bool pError; // potrei mettere una stringa o un numero per i tipi di errori
 
 
@@ -75,9 +76,10 @@ private:
 	}
 
 public: // tutti possono accedere alla funzione sottostante
-	FuncCell(py::list pyCells, std::string function) // costruttore
+	FuncCell(py::list pyCells, std::string function, std::string formula) // costruttore
 	{
 		pFunction = function;
+		pFormula = formula;
 		pError = false;
 
 		for (int i = 0; i < pyCells.size(); i++)
@@ -118,12 +120,14 @@ public: // tutti possono accedere alla funzione sottostante
 
 	std::string getString() override
 	{
-		return pFunction; // ridare formula (DA FARE)
+		return pFormula;
 	}
 
 	std::string getDisplay() override
 	{
 		return std::to_string(get());
 	}
+
+
 };
 #endif // !FUNCCELL_H
