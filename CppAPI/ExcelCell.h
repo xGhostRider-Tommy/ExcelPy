@@ -24,7 +24,7 @@ public:
 
 	~ExcelCell()
 	{
-		delete pCell;
+		// pCell non eliminata perche' lo fa gia' il garbage collector di python
 	}
 
 	Cell* ptr()

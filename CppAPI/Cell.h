@@ -39,5 +39,10 @@ public:
 		return getString();
 	}
 
+	virtual bool Error()
+	{
+		return false;
+	}
+
 };
 #endif // !CELL_H

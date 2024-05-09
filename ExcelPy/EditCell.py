@@ -22,9 +22,9 @@ def ParseFunction(table, value):
     tPos = []
 
     if (len(value) != 0):
-        if (value[0] == '='):
-            parsedValue = value[1:].split(';')
+        parsedValue = value[1:].split(';')
         
+        if (value[0] == '='):
             for element in parsedValue[1:]:
                 tPos = element.split('_')
 

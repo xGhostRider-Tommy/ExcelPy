@@ -90,6 +90,8 @@ public: // tutti possono accedere alla funzione sottostante
 
 	~FuncCell() // distruttore
 	{
+		pError = false;
+
 		for (int i = 0; i < pCells.size(); i++)
 		{
 			if (!pCells[i]->KeepAlive()) // se non gli dici quando distruggere non lo fa mai
@@ -100,15 +102,8 @@ public: // tutti possono accedere alla funzione sottostante
 		pCells.clear();
 	}
 
-	bool Error() // da rivedere il nome
-	{
-		return pError;
-	}
-
 	double get() override
 	{
-		pError = false;
-
 		if (pFunction == "sum") return pSum();
 		else if (pFunction == "subtraction") return pSubtraction();
 		else if (pFunction == "multiplication") return pMultiplication();
@@ -128,6 +123,15 @@ public: // tutti possono accedere alla funzione sottostante
 		return std::to_string(get());
 	}
 
+	bool Error() override
+	{
+		return pError;
+	}
+
+	void setError(bool error)
+	{
+		pError = error;
+	}
 
 };
 #endif // !FUNCCELL_H

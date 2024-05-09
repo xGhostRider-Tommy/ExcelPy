@@ -1,5 +1,3 @@
-import glob
-from token import COMMA
 from EditCell import ParseValue, tk, ttk, CppAPI
 
 
@@ -13,9 +11,6 @@ global currentCell
 global addY
 global addX
 
-a = [CppAPI.ExcelCell(CppAPI.DoubleCell(1))]
-a[0] = "hdahuiasd"
-a.pop()
 
 def Reload():
     global cellsXNumber
@@ -26,6 +21,7 @@ def Reload():
     for y in range(0, cellsYNumber):
         for x in range(0, cellsXNumber):
             
+
             displayTable[y][x].config(
                 text = table[y][x].ptr().get(),
                 command = (
@@ -92,30 +88,16 @@ def UpdateTable():
         while (len(table[y]) != cellsXNumber):
             table[y].pop()
     
-    print("cellsYNumber: " + str(cellsYNumber) + "\n")
-    print("len table: " + str(len(table)))
-    print("y: " + str(y))
     while (len(table) != cellsYNumber):
-        for i in range(0, len(table[-1])):
-            table[-1].pop()
         table.pop()
-        print("len table: " + str(len(table)))
-        print("y: " + str(y))
-    print("lets go")
-        
-
-
     
-        
 
-
-    addX.place(x = cellsXNumber*65, y = 25)
+    addX.place(x = (cellsXNumber + 1)*65, y = 50)
     addY.place(x = 0, y = (cellsYNumber+2)*25)
     
-    removeX.place(x = (cellsXNumber)*65, y = 25)
+    removeX.place(x = (cellsXNumber + 1)*65, y = 75)
     removeY.place(x = 40, y = (cellsYNumber+2)*25)
     
-    print("\n\n\n\n\n\n\n\n")
     Reload()
 
 def AddX():
