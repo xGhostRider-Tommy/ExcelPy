@@ -1,4 +1,4 @@
-from EditCell import ParseValue, tk, ttk, CppAPI
+from EditCell import ParseValue, tk, ttk, CppAPI # importa le funzioni di EditCell, tk, CppAPI
 
 
 global cellsXNumber
@@ -10,22 +10,22 @@ global table
 global currentCell
 global addY
 global addX
+# aggiungo le variabili globali al programma 
 
-
-def Reload():
+def Reload(): # ricarica i valori scritti nelle celle
     global cellsXNumber
     global cellsYNumber
     global displayTable
     global table
-
-    for y in range(0, cellsYNumber):
+# definendo le variabili globali
+    
+    for y in range(0, cellsYNumber): # scorre i valori dentro a display table
         for x in range(0, cellsXNumber):
             
-
-            displayTable[y][x].config(
-                text = table[y][x].ptr().get(),
+            displayTable[y][x].config( # modifica quel bottone
+                text = table[y][x].ptr().get(), # modifica il testo dentro al bottone
                 command = (
-                    lambda x = x, y = y: currentFormula.set(CellPressed(x, y))
+                    lambda x = x, y = y: currentFormula.set(CellPressed(x, y)) # quando crei una cella devi aggiornare la barra sopra (currentFormula)
                 )
             )
 
@@ -45,10 +45,10 @@ def CellPressed(x, y):
     global currentCell
     global table
 
-    currentCell = table[y][x]
+    currentCell = table[y][x] # quando premi il pulsante si aggiorna la currentCell
     return table[y][x].ptr().getString()
 
-def UpdateTable():
+def UpdateTable(): # scorre fra le celle e se vede r.58 la refresha
     global cellsYNumber
     global cellsXNumber
     global table
@@ -126,27 +126,27 @@ def RemoveY():
     UpdateTable()
 
 
-cellsXNumber = 3
+cellsXNumber = 3 # definisce quante caselle ci saranno all'inizio della compilazione del programma 
 cellsYNumber = 3
-displayTable = []
-table = []
-currentCell = None
-root = tk.Tk()
+displayTable = [] # lista dei bottoni (bottoni -> celle che vengono letti bottoni per essere cliccabili)
+table = [] # lista di tutti i puntatori delle celle (lista di tutti gli ExcelCell)
+currentCell = None # la barra di funzione è vuota
+root = tk.Tk() # crea finestra
 
-currentFormula = tk.StringVar()
-formulaBar = tk.Entry(root, textvariable=currentFormula)
-formulaBar.grid(row=0, column=0)
+currentFormula = tk.StringVar() # tutto quello che è scritto nella barra in alto viene visualizzata quando chiamo currentFormula, le do un "nome"
+formulaBar = tk.Entry(root, textvariable=currentFormula) # definisce la barra in se, non ciò che contiene
+formulaBar.grid(row=0, column=0) # dice dove la mette
 
-updateButton = tk.Button(root, text="Update Value", command=UpdateValue)
-updateButton.place(x = 150, y = 0)
+updateButton = tk.Button(root, text="Update Value", command=UpdateValue) # crei il bottone del refresh (in excel non si aggiorna fino a quando non premi invio, è la stessa cosa)
+updateButton.place(x = 150, y = 0) # dice dove la mette
 
-addX = tk.Button(root, text="+", command=AddX, height=1, width=4)
+addX = tk.Button(root, text="+", command=AddX, height=1, width=4) # bottone con il più /meno, sopra/sotto
 addY = tk.Button(root, text="+", command=AddY, height=1, width=4)
 
 removeX = tk.Button(root, text="-", command=RemoveX, height=1, width=4)
 removeY = tk.Button(root, text="-", command=RemoveY, height=1, width=4)
 
-UpdateTable()
+UpdateTable() #funzione che aggiorna
 
 root.state("zoomed")
 root.mainloop()
