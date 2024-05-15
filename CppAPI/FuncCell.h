@@ -27,11 +27,11 @@ private:
 
 	double pSubtraction()
 	{
-		double subtraction = 0;
+		double subtraction = pCells[0]->ptr()->get();
 
-		for (int i = 0; i < pCells.size(); i++)
+		for (int i = 0; i < pCells.size() - 1; i++)
 		{
-			subtraction = subtraction - pCells[i]->ptr()->get();
+			subtraction = subtraction - pCells[i + 1]->ptr()->get();
 		}
 		return subtraction;
 	}
@@ -42,14 +42,16 @@ private:
 
 		for (int i = 0; i < pCells.size(); i++)
 		{
-			multiplication = multiplication + pCells[i]->ptr()->get();
+			multiplication = multiplication * pCells[i]->ptr()->get();
 		}
 		return multiplication;
 	}
 
 	double pDivision()
 	{
-		if (pCells.size() == 2)
+		pError = false;
+
+		if (pCells.size() >= 2 && pCells[1]->ptr()->get() != 0)
 		{
 			return pCells[0]->ptr()->get() / pCells[1]->ptr()->get();
 		}
@@ -90,15 +92,6 @@ public: // tutti possono accedere alla funzione sottostante
 
 	~FuncCell() // distruttore
 	{
-		pError = false;
-
-		for (int i = 0; i < pCells.size(); i++)
-		{
-			if (!pCells[i]->KeepAlive()) // se non gli dici quando distruggere non lo fa mai
-			{
-				delete pCells[i];
-			}
-		}
 		pCells.clear();
 	}
 
@@ -120,17 +113,16 @@ public: // tutti possono accedere alla funzione sottostante
 
 	std::string getDisplay() override
 	{
-		return std::to_string(get());
-	}
+		double value = get();
 
-	bool Error() override
-	{
-		return pError;
-	}
-
-	void setError(bool error)
-	{
-		pError = error;
+		if (pError)
+		{
+			return "Error!";
+		}
+		else
+		{
+			return std::to_string(value);
+		}
 	}
 
 };

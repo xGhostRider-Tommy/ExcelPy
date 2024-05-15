@@ -9,7 +9,7 @@ def ParseValue(table, value): # funzione che viene chiamata da ExcelPy.py
     except:
         parsedValue = ParseFunction(table, value) # se non riesci chiama ParseFunction()
         if (parsedValue == None):
-            return ParseString(table, value)
+            return ParseString(value)
         else:
             return parsedValue
         
@@ -17,7 +17,7 @@ def ParseValue(table, value): # funzione che viene chiamata da ExcelPy.py
             
 
 
-def ParseFunction(table, value): # prova a valutarlo come una funzione
+def ParseFunction(table, value): # prova a valutarlo come una funzione # CppAPI.Cell ParseFunction(list<list<CppAPI.ExcelCell>> table, string value)
     cells = []
     tPos = []
 
@@ -53,7 +53,7 @@ def ParseFunction(table, value): # prova a valutarlo come una funzione
               
 
 
-def ParseString(table, value):
+def ParseString(value): # se non riesce a far nulla lo trasforma in una StringCell # CppAPI.Cell ParseString(CppAPI.Cell value)
     if (value == ""):
         cell = CppAPI.Cell()
     else:

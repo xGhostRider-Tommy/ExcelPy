@@ -7,18 +7,10 @@ class ExcelCell
 {
 private:
 	Cell* pCell;
-	bool pKeepAlive;
 	
 public:
-	ExcelCell(py::object cell, bool isReferenced)
-	{
-		pKeepAlive = isReferenced;
-		set(cell);
-	}
-
 	ExcelCell(py::object cell)
 	{
-		pKeepAlive = false;
 		set(cell);
 	}
 
@@ -34,13 +26,7 @@ public:
 
 	void set(py::object cell)
 	{
-		//delete pCell;
 		pCell = cell.cast<Cell*>();
-	}
-
-	bool KeepAlive()
-	{
-		return pKeepAlive;
 	}
 };
 #endif
