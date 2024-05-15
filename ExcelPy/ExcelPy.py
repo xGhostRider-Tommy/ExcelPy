@@ -1,18 +1,23 @@
 from EditCell import ParseValue, tk, ttk, CppAPI # importa le funzioni di EditCell, tk, CppAPI
 
 
-global cellsXNumber
-global cellsYNumber
-global displayTable
-global root
-global currentFormula
-global table
-global currentCell
-global addY
-global addX
+global cellsXNumber # lunghezza della x # int
+global cellsYNumber # lunghezza della y # int
+global displayTable # lista 2d dei bottoni # list<list<tk.Button>>
+global root # finistra di windows # tk.Tk
+global table # lista 2d di ExcelCell # list<list<CppAPI.ExcelCell>>
+global currentCell # puntatore alla cella selezionata # ExcelCell
+global addY # bottone + per le y # tk.Button
+global addX # bottone + per le x # tk.Button
+global removeX # bottone - per le x # tk.Button
+global removeY # bottone - per le y # tk.Button
+global updateButton # bottone reflasha # tk.Button
+global formulaBar # barra della formula # tk.Entry
+global currentFormula # testo scritto nella barra della formula # tk.StringVar
 # aggiungo le variabili globali al programma 
 
-def Reload(): # ricarica i valori scritti nelle celle
+
+def Reload(): # ricarica i valori scritti nelle celle # void Reload()
     global cellsXNumber
     global cellsYNumber
     global displayTable
@@ -29,7 +34,7 @@ def Reload(): # ricarica i valori scritti nelle celle
                 )
             )
 
-def UpdateValue():
+def UpdateValue(): # aggiorna il valore della cella modificata # void UpdateValue()
     global currentCell
     global table
     global currentFormula
@@ -41,18 +46,19 @@ def UpdateValue():
         currentCell.set(ParseValue(table, currentFormula.get()))
         Reload()
 
-def CellPressed(x, y):
+def CellPressed(x, y): # funzione che viene eseguita quando una cella e' premuta # string CellPressed(int x, int y)
     global currentCell
     global table
 
     currentCell = table[y][x] # quando premi il pulsante si aggiorna la currentCell
     return table[y][x].ptr().getString()
 
-def UpdateTable(): # scorre fra le celle e se vede r.58 la refresha
+def UpdateTable(): # refresha e checka se le celle sono state eliminate o ne sono state aggiunte di altre # void UpdateTable()
     global cellsYNumber
     global cellsXNumber
     global table
     global displayTable
+    global currentCell
 
     for y in range(0, cellsYNumber): # scorre nelle y e cerca colonne che devono essere aggiunte
         if (len(displayTable) <= y): # vede se le y sono abbastanza
@@ -86,9 +92,13 @@ def UpdateTable(): # scorre fra le celle e se vede r.58 la refresha
                 table[y].append(CppAPI.ExcelCell(CppAPI.DoubleCell(1)))
         
         while (len(table[y]) != cellsXNumber):
+            if (table[y][-1] == currentCell): # se la cella che voglio eliminare e' selezionata, rendo currentCell nulla
+                currentCell = None
             table[y].pop()
     
     while (len(table) != cellsYNumber):
+        if (table == currentCell): # se la cella che voglio eliminare e' selezionata, rendo currentCell nulla
+            currentCell = None
         table.pop() # l'oggetto viene eliminato da button, il bottone no
     
 
@@ -100,26 +110,26 @@ def UpdateTable(): # scorre fra le celle e se vede r.58 la refresha
     
     Reload()
 
-def AddX():
+def AddX(): # funzione che viene eseguita quando addX e' premuto # void AddX()
     global cellsXNumber
     cellsXNumber += 1 # aumenta o diminuisce il numero di celle
     
-    UpdateTable() # chiama la funzione update table
+    # chiama la funzione update table
+    UpdateTable()
     
-def AddY():
+def AddY(): # funzione che viene eseguita quando addY e' premuto # void AddY()
     global cellsYNumber
     cellsYNumber += 1
     
     UpdateTable()
-
     
-def RemoveX():
+def RemoveX(): # funzione che viene eseguita quando removeX e' premuto # void RemoveX()
     global cellsXNumber
     cellsXNumber -= 1
     
     UpdateTable()
     
-def RemoveY():
+def RemoveY(): # funzione che viene eseguita quando removeY e' premuto # void RemoveY()
     global cellsYNumber
     cellsYNumber -= 1
     
@@ -148,5 +158,5 @@ removeY = tk.Button(root, text="-", command=RemoveY, height=1, width=4)
 
 UpdateTable() #funzione che aggiorna
 
-root.state("zoomed")
-root.mainloop()
+root.state("zoomed") # la finesta e' ingrandita
+root.mainloop() # starta la finestra

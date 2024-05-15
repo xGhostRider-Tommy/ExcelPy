@@ -3,11 +3,11 @@ import tkinter as tk
 from tkinter import ttk
 
 
-def ParseValue(table, value):
+def ParseValue(table, value): # funzione che viene chiamata da ExcelPy.py
     try:
-        parsedValue = float(value)
+        parsedValue = float(value) # se l'elemento e' un numero crea una DoubleCell con quel valore
     except:
-        parsedValue = ParseFunction(table, value)
+        parsedValue = ParseFunction(table, value) # se non riesci chiama ParseFunction()
         if (parsedValue == None):
             return ParseString(table, value)
         else:
@@ -17,7 +17,7 @@ def ParseValue(table, value):
             
 
 
-def ParseFunction(table, value):
+def ParseFunction(table, value): # prova a valutarlo come una funzione
     cells = []
     tPos = []
 

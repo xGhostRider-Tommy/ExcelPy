@@ -17,7 +17,7 @@ public: // chiunque puo' accedere a questa funzione (tutto quello che c'e' sotto
 
 	~DoubleCell() // distruttore
 	{
-		// in caso ci sia un puntatore gli viene detto di distruggerlo
+		
 	}
 
 	double get() override // ritorna il pValore

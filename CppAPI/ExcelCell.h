@@ -34,7 +34,7 @@ public:
 
 	void set(py::object cell)
 	{
-		delete pCell;
+		//delete pCell;
 		pCell = cell.cast<Cell*>();
 	}
 
