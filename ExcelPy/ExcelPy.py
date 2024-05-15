@@ -14,7 +14,7 @@ global removeY # bottone - per le y # tk.Button
 global updateButton # bottone reflasha # tk.Button
 global formulaBar # barra della formula # tk.Entry
 global currentFormula # testo scritto nella barra della formula # tk.StringVar
-# aggiungo le variabili globali al programma 
+# aggiungo le variabili globali al programma
 
 
 def Reload(): # ricarica i valori scritti nelle celle # void Reload()
@@ -22,7 +22,7 @@ def Reload(): # ricarica i valori scritti nelle celle # void Reload()
     global cellsYNumber
     global displayTable
     global table
-# definendo le variabili globali
+    # definendo le variabili globali
     
     for y in range(0, cellsYNumber): # scorre i valori dentro a display table
         for x in range(0, cellsXNumber):
