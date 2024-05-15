@@ -54,30 +54,30 @@ def UpdateTable(): # scorre fra le celle e se vede r.58 la refresha
     global table
     global displayTable
 
-    for y in range(0, cellsYNumber):
-        if (len(displayTable) <= y):
-            displayTable.append([])
+    for y in range(0, cellsYNumber): # scorre nelle y e cerca colonne che devono essere aggiunte
+        if (len(displayTable) <= y): # vede se le y sono abbastanza
+            displayTable.append([]) # aggiunge una lista vuota (colonna)
         
         for x in range(0, cellsXNumber):
             if (len(displayTable[y]) <= x):
-                button = tk.Button(root, text="", height=1, width=10)
+                button = tk.Button(root, text="", height=1, width=10) # crea il bottone
                 button.place(x = x*80, y = (y+2)*25)
         
-                displayTable[y].append(button)
-            displayTable[y][x].config(command=None)
+                displayTable[y].append(button) # aggiungo il bottone 
+            displayTable[y][x].config(command=None) # dico che la funzione è nulla perchè la aggiungo dopo
                 
-        while (len(displayTable[y]) != cellsXNumber):
-            displayTable[y][-1].destroy()
-            displayTable[y].pop()
+        while (len(displayTable[y]) != cellsXNumber): # scorre nelle y e cerca colonne che devono essere rimosse
+            displayTable[y][-1].destroy() # i bottoni/celle vengono distrutti
+            displayTable[y].pop() # elimina la lista nella lista di liste
             
-    while (len(displayTable) != cellsYNumber):
+    while (len(displayTable) != cellsYNumber): # stessa roba ma per le x
         for element in displayTable[-1]:
             element.destroy()
         
         displayTable.pop()
         
 
-    for y in range(0, cellsYNumber):
+    for y in range(0, cellsYNumber): # stessa cosa ma per table (lista oggetti), displaytable e' la lista dei bottoni
         if (len(table) <= y):
             table.append([]);
         
@@ -89,10 +89,10 @@ def UpdateTable(): # scorre fra le celle e se vede r.58 la refresha
             table[y].pop()
     
     while (len(table) != cellsYNumber):
-        table.pop()
+        table.pop() # l'oggetto viene eliminato da button, il bottone no
     
 
-    addX.place(x = (cellsXNumber + 1)*65, y = 50)
+    addX.place(x = (cellsXNumber + 1)*65, y = 50) # operazioni che calcolano la nuova posizione del bottone
     addY.place(x = 0, y = (cellsYNumber+2)*25)
     
     removeX.place(x = (cellsXNumber + 1)*65, y = 75)
@@ -102,9 +102,9 @@ def UpdateTable(): # scorre fra le celle e se vede r.58 la refresha
 
 def AddX():
     global cellsXNumber
-    cellsXNumber += 1
+    cellsXNumber += 1 # aumenta o diminuisce il numero di celle
     
-    UpdateTable()
+    UpdateTable() # chiama la funzione update table
     
 def AddY():
     global cellsYNumber
