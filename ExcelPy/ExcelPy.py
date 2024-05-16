@@ -62,11 +62,11 @@ def UpdateTable(): # refresha e checka se le celle sono state eliminate o ne son
 
     for y in range(0, cellsYNumber): # scorre nelle y e cerca colonne che devono essere aggiunte
         if (len(displayTable) <= y): # vede se le y sono abbastanza
-            displayTable.append([]) # aggiunge una lista vuota (colonna)
+            displayTable.append([]) # aggiunge una lista vuota (parentesi quadre)
         
         for x in range(0, cellsXNumber):
             if (len(displayTable[y]) <= x):
-                button = tk.Button(root, text="", height=1, width=10) # crea il bottone
+                button = tk.Button(root, text="", height=1, width=10) # crea il bottone (tondini)
                 button.place(x = x*80, y = (y+2)*25)
         
                 displayTable[y].append(button) # aggiungo il bottone 
